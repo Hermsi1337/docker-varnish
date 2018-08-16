@@ -1,6 +1,10 @@
-FROM    ubuntu:trusty
+ARG     BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION:-trusty}"
+
+FROM    ubuntu:${BASE_IMAGE_VERSION}
 
 LABEL   maintainer="https://github.com/Hermsi1337"
+
+ARG     VARNISH_VERSION="${VARNISH_VERSION:-3.0.5-2ubuntu0.1}"
 
 ENV     VARNISH_PORT="8080" \
         VARNISH_BACKEND_ADDRESS="localhost" \
@@ -10,16 +14,17 @@ ENV     VARNISH_PORT="8080" \
         VARNISH_VCL_CONTENT="" \
         VARNISHD_OPTS="" \
         VARNISHLOG="false" \
-        VARNISHLOG_OPTS=""
+        VARNISHLOG_OPTS="" \
+        VARNISH_VERSION="${VARNISH_VERSION}"
 
 RUN     apt-get -qq update && \
         apt-get -qq upgrade && \
-        apt-get -qq install varnish && \
+        apt-get -qq install varnish=${VARNISH_VERSION} && \
         apt-get -qq autoremove && \
         apt-get -qq autoclean && \
         rm -rf /tmp/* /var/cache/apt/*
 
-COPY    ../bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY    bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 EXPOSE  8080
 
