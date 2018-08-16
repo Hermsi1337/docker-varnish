@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -xe
 
 exact_version() {
 
@@ -34,12 +34,13 @@ for VARNISH_VERSION_DIR in varnish-*; do
     BASE_IMAGE_VERSION="$(exact_version BASE_IMAGE ${VERSION_FILE})"
 
     docker build \
+        --no-cache \
         --pull \
         --build-arg VARNISH_VERSION="${EXACT_VARNISH_VERSION}" \
         --build-arg BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION}" \
-        -t "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
-        -t "${IMAGE_NAME}:${EXACT_VARNISH_VERSION}" \
-        -f "${FULL_VARNISH_VERSION_PATH}/Dockerfile" \
+        --tag "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
+        --tag "${IMAGE_NAME}:${EXACT_VARNISH_VERSION}" \
+        --file "${FULL_VARNISH_VERSION_PATH}/Dockerfile" \
         "${TRAVIS_BUILD_DIR}"
 
     if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then
