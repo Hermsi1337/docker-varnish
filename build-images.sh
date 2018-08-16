@@ -24,14 +24,14 @@ for VARNISH_VERSION_DIR in varnish-*; do
     unset VERSION_FILE
     VERSION_FILE="${FULL_VARNISH_VERSION_PATH}/exact_versions"
 
-    unset EXACT_VARNISH_VERSION
-    EXACT_VARNISH_VERSION="$(exact_version VARNISH ${VERSION_FILE})"
-
-    unset MAJOR_RELEASE_TAG
-    MAJOR_RELEASE_TAG="${EXACT_VARNISH_VERSION%%.*}"
+    unset PATCH_RELEASE_TAG
+    PATCH_RELEASE_TAG="$(exact_version VARNISH ${VERSION_FILE})"
 
     unset MINOR_RELEASE_TAG
-    MINOR_RELEASE_TAG="${EXACT_VARNISH_VERSION%*.*.*}"
+    MINOR_RELEASE_TAG="${PATCH_RELEASE_TAG%*.*.*}"
+
+    unset MAJOR_RELEASE_TAG
+    MAJOR_RELEASE_TAG="${MINOR_RELEASE_TAG%.*}"
 
     unset BASE_IMAGE_VERSION
     BASE_IMAGE_VERSION="$(exact_version BASE_IMAGE ${VERSION_FILE})"
@@ -39,18 +39,19 @@ for VARNISH_VERSION_DIR in varnish-*; do
     docker build \
         --no-cache \
         --pull \
-        --build-arg VARNISH_VERSION="${EXACT_VARNISH_VERSION}" \
+        --build-arg VARNISH_VERSION="${PATCH_RELEASE_TAG}" \
         --build-arg BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION}" \
         --tag "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
         --tag "${IMAGE_NAME}:${MINOR_RELEASE_TAG}" \
-        --tag "${IMAGE_NAME}:${EXACT_VARNISH_VERSION}" \
+        --tag "${IMAGE_NAME}:${PATCH_RELEASE_TAG}" \
         --file "${FULL_VARNISH_VERSION_PATH}/Dockerfile" \
         "${TRAVIS_BUILD_DIR}"
 
     if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then
 
         docker push "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}"
-        docker push "${IMAGE_NAME}:${EXACT_VARNISH_VERSION}"
+        docker push "${IMAGE_NAME}:${MINOR_RELEASE_TAG}"
+        docker push "${IMAGE_NAME}:${PATCH_RELEASE_TAG}"
 
     fi
 
