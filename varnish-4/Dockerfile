@@ -1,4 +1,7 @@
-FROM    alpine:3.6
+ARG     VARNISH_VERSION=${VARNISH_VERSION:-4.1.9-r0}
+ARG     BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION:-3.6}
+
+FROM    alpine:${BASE_IMAGE_VERSION}
 
 LABEL   maintainer="https://github.com/Hermsi1337"
 
@@ -10,13 +13,14 @@ ENV     VARNISH_PORT="8080" \
         VARNISH_VCL_CONTENT="" \
         VARNISHD_OPTS="" \
         VARNISHLOG="false" \
-        VARNISHLOG_OPTS=""
+        VARNISHLOG_OPTS="" \
+        VARNISH_VERSION="${VARNISH_VERSION}"
 
 RUN     apk update && \
         apk upgrade && \
-        apk add varnish && \
+        apk add varnish=${VARNISH_VERSION} && \
         rm -rf /tmp/* /var/cache/apk/*
 
-COPY    ../bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY    bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 CMD     ["/usr/local/bin/docker-entrypoint"]
