@@ -24,19 +24,19 @@ for VARNISH_VERSION_DIR in varnish-*; do
     unset VERSION_FILE
     VERSION_FILE="${FULL_VARNISH_VERSION_PATH}/exact_versions"
 
-    unset MAJOR_RELEASE_TAG
-    RELEASE_TAG="$(basename ${PWD} | cut -d '-' -f 2)"
-
     unset EXACT_VARNISH_VERSION
     EXACT_VARNISH_VERSION="$(exact_version VARNISH ${VERSION_FILE})"
 
-    unset ALPINE_VERSION
+    unset MAJOR_RELEASE_TAG
+    MAJOR_RELEASE_TAG="${EXACT_VARNISH_VERSION%%.*}"
+
+    unset BASE_IMAGE_VERSION
     BASE_IMAGE_VERSION="$(exact_version BASE_IMAGE ${VERSION_FILE})"
 
     docker build \
         --pull \
-        --build-arg VARNISH_VERSION=${EXACT_VARNISH_VERSION} \
-        --build-arg BASE_IMAGE_VERSION=${BASE_IMAGE_VERSION} \
+        --build-arg VARNISH_VERSION="${EXACT_VARNISH_VERSION}" \
+        --build-arg BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION}" \
         -t "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
         -t "${IMAGE_NAME}:${EXACT_VARNISH_VERSION}" \
         -f "${FULL_VARNISH_VERSION_PATH}/Dockerfile" \
