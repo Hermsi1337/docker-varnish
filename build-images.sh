@@ -24,8 +24,11 @@ for VARNISH_VERSION_DIR in varnish-*; do
     unset VERSION_FILE
     VERSION_FILE="${FULL_VARNISH_VERSION_PATH}/exact_versions"
 
+    unset META_RELEASE_TAG
+    META_RELEASE_TAG="$(exact_version VARNISH ${VERSION_FILE})"
+
     unset PATCH_RELEASE_TAG
-    PATCH_RELEASE_TAG="$(exact_version VARNISH ${VERSION_FILE})"
+    PATCH_RELEASE_TAG="${META_RELEASE_TAG%-*}"
 
     unset MINOR_RELEASE_TAG
     MINOR_RELEASE_TAG="${PATCH_RELEASE_TAG%.*}"
@@ -44,6 +47,7 @@ for VARNISH_VERSION_DIR in varnish-*; do
         --tag "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
         --tag "${IMAGE_NAME}:${MINOR_RELEASE_TAG}" \
         --tag "${IMAGE_NAME}:${PATCH_RELEASE_TAG}" \
+        --tag "${IMAGE_NAME}:${META_RELEASE_TAG}" \
         --file "${FULL_VARNISH_VERSION_PATH}/Dockerfile" \
         "${TRAVIS_BUILD_DIR}"
 
@@ -52,6 +56,7 @@ for VARNISH_VERSION_DIR in varnish-*; do
         docker push "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}"
         docker push "${IMAGE_NAME}:${MINOR_RELEASE_TAG}"
         docker push "${IMAGE_NAME}:${PATCH_RELEASE_TAG}"
+        docker push "${IMAGE_NAME}:${META_RELEASE_TAG}"
 
     fi
 
