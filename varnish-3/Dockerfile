@@ -26,6 +26,4 @@ RUN     apt-get -qq update && \
 
 COPY    bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
-EXPOSE  8080
-
 CMD     ["/usr/local/bin/docker-entrypoint"]
