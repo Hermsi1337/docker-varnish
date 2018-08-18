@@ -25,11 +25,7 @@ start_varnishd () {
     fi
 }
 
-if [ "${VARNISH_BACKEND_ADDRESS}" == "localhost" ] && [ "${VARNISH_BACKEND_PORT}" == "80" ]; then
-    echo "You did not configure your backend properly."
-    echo "Check the docs, dude!"
-    exit 1 # r.i.p.
-elif [ ! -s "${VARNISH_VCL_PATH}" ] && [ -z "${VARNISH_VCL_CONTENT}" ]; then
+if [ ! -s "${VARNISH_VCL_PATH}" ] && [ -z "${VARNISH_VCL_CONTENT}" ]; then
     echo "It seems that vcl ist not mounted propberly."
     echo "${VARNISH_VCL_CUSTOM_PATH}"
     exit 1 # r.i.p.
