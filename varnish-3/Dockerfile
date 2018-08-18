@@ -7,8 +7,6 @@ LABEL   maintainer="https://github.com/Hermsi1337"
 ARG     VARNISH_VERSION="${VARNISH_VERSION:-3.0.5-2ubuntu0.1}"
 
 ENV     VARNISH_PORT="8080" \
-        VARNISH_BACKEND_ADDRESS="localhost" \
-        VARNISH_BACKEND_PORT="80" \
         VARNISH_RAM_STORAGE="128M" \
         VARNISH_VCL_PATH="/etc/varnish/default.vcl" \
         VARNISH_VCL_CONTENT="" \
