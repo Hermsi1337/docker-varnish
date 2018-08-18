@@ -31,7 +31,7 @@ if [ ! -s "${VARNISH_VCL_PATH}" ] && [ -z "${VARNISH_VCL_CONTENT}" ]; then
     exit 1 # r.i.p.
 fi
 
-if [ ! -z "${VARNISH_VCL_CONTENT}" ]; then
+if [ -n "${VARNISH_VCL_CONTENT}" ]; then
     $(command -v echo) "${VARNISH_VCL_CONTENT}" > "${VARNISH_VCL_PATH}"
 fi
 
