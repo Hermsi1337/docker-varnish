@@ -2,7 +2,7 @@
 
 set -e
 
-VARNISHLOG="$(echo '${VARNISHLOG}' | $(command -v tr) '[:upper:]' '[:lower:]')"
+VARNISHLOG="$($(command -v echo) '${VARNISHLOG}' | $(command -v tr) '[:upper:]' '[:lower:]')"
 
 start_varnishd () {
     FILE="${1}"
