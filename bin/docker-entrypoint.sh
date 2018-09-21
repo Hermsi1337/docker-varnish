@@ -2,6 +2,8 @@
 
 set -e
 
+VARNISHLOG="$(echo '${VARNISHLOG}' | $(command -v tr) '[:upper:]' '[:lower:]')"
+
 start_varnishd () {
     FILE="${1}"
 
@@ -10,7 +12,7 @@ start_varnishd () {
                     ${VARNISHD_OPTS} -a :${VARNISH_PORT} \
                     -s default=malloc,${VARNISH_RAM_STORAGE}"
 
-        VARNISHLOG="exec $(command -v varnishlog) \
+        VARNISHD_LOG="exec $(command -v varnishlog) \
                     ${VARNISHLOG_OPTS}"
     else
         VARNISHD="exec $(command -v varnishd)  \
@@ -20,8 +22,8 @@ start_varnishd () {
 
     ${VARNISHD} -f "${FILE}"
 
-    if [ "${VARNISH_LOG}" == "TRUE" ]; then
-        eval "${VARNISHLOG}"
+    if [ "${VARNISHLOG}" == "true" ]; then
+        eval "${VARNISHD_LOG}"
     fi
 }
 
