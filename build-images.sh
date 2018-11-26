@@ -7,7 +7,7 @@ exact_base_version() {
     unset FILE
     FILE="${1}"
     
-    grep -i "BASE_VERSION" "${FILE}" | cut -d '=' -f 2
+    grep -i "BASE_IMAGE" "${FILE}" | cut -d '=' -f 2
 
 }
 
