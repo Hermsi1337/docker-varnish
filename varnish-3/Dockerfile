@@ -17,7 +17,7 @@ ENV     VARNISH_PORT="8080" \
 
 RUN     apt-get -qq update && \
         apt-get -qq upgrade && \
-        apt-get -qq install varnish=${VARNISH_VERSION} && \
+        apt-get -qq install varnish && \
         apt-get -qq autoremove && \
         apt-get -qq autoclean && \
         rm -rf /tmp/* /var/cache/apt/*

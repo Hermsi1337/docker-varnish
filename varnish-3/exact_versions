@@ -1,2 +1,1 @@
-VARNISH=3.0.5-2ubuntu0.1
 BASE_IMAGE=trusty
