@@ -4,10 +4,8 @@ set -e
 
 exact_base_version() {
 
-    unset APP
-    APP="${1}"
     unset FILE
-    FILE="${2}"
+    FILE="${1}"
     
     grep -i "BASE_VERSION" "${FILE}" | cut -d '=' -f 2
 
