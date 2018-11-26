@@ -60,7 +60,7 @@ for VARNISH_VERSION_DIR in varnish-*; do
     docker build \
         --no-cache \
         --pull \
-        --silent \
+        --quiet \
         --build-arg VARNISH_VERSION="${META_RELEASE_TAG}" \
         --build-arg BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION}" \
         --tag "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
