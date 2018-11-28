@@ -77,14 +77,19 @@ for VARNISH_VERSION_DIR in varnish-*; do
     if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then
 
         [[ "${MINOR_RELEASE_TAG}" == "${STABLE_VERSION}" ]] && \
-            docker push "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}"
+        docker push "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}"
+        
         docker push "${IMAGE_NAME}:${MINOR_RELEASE_TAG}"
+        
         docker push "${IMAGE_NAME}:${PATCH_RELEASE_TAG}"
+        
         docker push "${IMAGE_NAME}:${META_RELEASE_TAG}"
+        
         [[ "${MINOR_RELEASE_TAG}" == "${STABLE_VERSION}" ]] && \
-            docker push "${IMAGE_NAME}:stable" && 
+        docker push "${IMAGE_NAME}:stable"
+        
         [[ "${MINOR_RELEASE_TAG}" == "${LATEST_VERSION}" ]] && \
-            docker push "${IMAGE_NAME}:latest"
+        docker push "${IMAGE_NAME}:latest"
 
     fi
 
