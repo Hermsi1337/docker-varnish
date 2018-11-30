@@ -48,9 +48,9 @@ It is also possible to pass additional [options](https://varnish-cache.org/docs/
 #### With docker run
 ##### Basic
 `$ docker run -d -v /host/path/varnish.vcl:/etc/varnish/default.vcl hermsi/alpine-varnish:stable`
-##### With custom cache size
+##### Custom cache size
 `$ docker run -d -v /host/path/varnish.vcl:/etc/varnish/default.vcl -e VARNISH_RAM_STORAGE=512M hermsi/alpine-varnish:stable`
-##### With varnishlog enabled
+##### Varnishlog enabled
 `$ docker run -d -v /host/path/varnish.vcl:/etc/varnish/default.vcl -e VARNISHLOG=true hermsi/alpine-varnish:stable`
 
 ### With docker-compose
