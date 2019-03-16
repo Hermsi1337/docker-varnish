@@ -41,7 +41,7 @@ start_varnishd () {
 if [ ! -s "${VARNISH_VCL_PATH}" ]; then
 
     echo "${VARNISH_VCL_PATH}"
-    echo "it seems that vcl ist not mounted"
+    echo "it seems like vcl ist not mounted"
     echo "looking for either a vcl in env \${VARNISH_VCL_CONTENT} or a default backend in \${VARNISH_VCL_BACKEND} ..."
 
     if [ -z "${VARNISH_VCL_DEFAULT_BACKEND}" ] && [ -z "${VARNISH_VCL_CONTENT}" ]; then
@@ -50,10 +50,11 @@ if [ ! -s "${VARNISH_VCL_PATH}" ]; then
     fi
 
     if [ -n "${VARNISH_VCL_CONTENT}" ]; then
-        echo "... found VCL in environment... forwarding content to ${VARNISH_VCL_PATH}"
+        echo "... found VCL in environment - starting varnishd with provided vcl content"
         echo "${VARNISH_VCL_CONTENT}" > "${VARNISH_VCL_PATH}"
         unset VARNISH_VCL_DEFAULT_BACKEND
     else
+        echo "... found default backend - starting varnishd with builtin vcl and provided backend address"
         unset VARNISH_VCL_PATH
     fi
 
