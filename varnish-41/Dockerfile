@@ -10,14 +10,15 @@ ENV     VARNISH_PORT="8080" \
         VARNISH_RAM_STORAGE="128M" \
         VARNISH_VCL_PATH="/etc/varnish/default.vcl" \
         VARNISH_VCL_CONTENT="" \
-        VARNISHD_OPTS="" \
+        VARNISH_VCL_DEFAULT_BACKEND="localhost:80" \
+        VARNISHD_ADDITIONAL_OPTS="" \
         VARNISHLOG="false" \
         VARNISHLOG_OPTS="" \
         VARNISH_VERSION="${VARNISH_VERSION}"
+ENV     VARNISHD_DEFAULT_OPTS="-a :${VARNISH_PORT} -s default=malloc,${VARNISH_RAM_STORAGE}"
 
-RUN     apk update && \
-        apk upgrade && \
-        apk add varnish=${VARNISH_VERSION} && \
+RUN     set -x && \
+        apk add --no-cache --upgrade varnish=${VARNISH_VERSION} && \
         rm -rf /tmp/* /var/cache/apk/*
 
 COPY    bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint

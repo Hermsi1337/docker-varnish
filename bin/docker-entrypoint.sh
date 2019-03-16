@@ -1,40 +1,62 @@
 #!/usr/bin/env sh
 
-set -e
+set -xe
 
 VARNISHLOG="$($(command -v echo) "${VARNISHLOG}" | $(command -v tr) '[:upper:]' '[:lower:]')"
 
+# 16. March 2019
+# We parse VARNISHD_OPTS as well as VARNISHD_ADDITIONAL_OPTS in order to don't break existent setups
+VARNISHD_FULL_OPTS="${VARNISHD_OPTS} ${VARNISHD_ADDITIONAL_OPTS} ${VARNISHD_DEFAULT_OPTS}"
+
 start_varnishd () {
     FILE="${1}"
+    VARNISH_BACKEND="${2}"
 
     if [ "${VARNISHLOG}" == "true" ]; then
         VARNISHD="$(command -v varnishd)  \
-                    ${VARNISHD_OPTS} -a :${VARNISH_PORT} \
-                    -s default=malloc,${VARNISH_RAM_STORAGE}"
+                    ${VARNISHD_FULL_OPTS}"
 
         VARNISHD_LOG="exec $(command -v varnishlog) \
                     ${VARNISHLOG_OPTS}"
     else
         VARNISHD="exec $(command -v varnishd)  \
-                    -F ${VARNISHD_OPTS} -a :${VARNISH_PORT} \
-                    -s default=malloc,${VARNISH_RAM_STORAGE}"
+                    -F ${VARNISHD_FULL_OPTS}"
     fi
 
-    ${VARNISHD} -f "${FILE}"
+    if [ -n "${FILE}" ]; then
+        ${VARNISHD} -f "${FILE}"
+    elif [ -n "${VARNISH_BACKEND}" ]; then
+        ${VARNISHD} -b "${VARNISH_BACKEND}"
+    else
+        echo "unable to start varnishd"
+        echo "this should not have happened"
+        exit 1 # r.i.p.
+    fi
 
     if [ "${VARNISHLOG}" == "true" ]; then
         eval "${VARNISHD_LOG}"
     fi
 }
 
-if [ ! -s "${VARNISH_VCL_PATH}" ] && [ -z "${VARNISH_VCL_CONTENT}" ]; then
-    echo "It seems that vcl ist not mounted properly."
-    echo "${VARNISH_VCL_CUSTOM_PATH}"
-    exit 1 # r.i.p.
+if [ ! -s "${VARNISH_VCL_PATH}" ]; then
+
+    echo "${VARNISH_VCL_PATH}"
+    echo "it seems that vcl ist not mounted"
+    echo "looking for either a vcl in env \${VARNISH_VCL_CONTENT} or a default backend in \${VARNISH_VCL_BACKEND} ..."
+
+    if [ -z "${VARNISH_VCL_DEFAULT_BACKEND}" ] && [ -z "${VARNISH_VCL_CONTENT}" ]; then
+        echo "... neither a default backend or a varnish vcl were provided in env - aborting now"
+        exit 1 # r.i.p.
+    fi
+
+    if [ -n "${VARNISH_VCL_CONTENT}" ]; then
+        echo "... found VCL in environment... forwarding content to ${VARNISH_VCL_PATH}"
+        echo "${VARNISH_VCL_CONTENT}" > "${VARNISH_VCL_PATH}"
+        unset VARNISH_VCL_DEFAULT_BACKEND
+    else
+        unset VARNISH_VCL_PATH
+    fi
+
 fi
 
-if [ -n "${VARNISH_VCL_CONTENT}" ]; then
-    $(command -v echo) "${VARNISH_VCL_CONTENT}" > "${VARNISH_VCL_PATH}"
-fi
-
-start_varnishd "${VARNISH_VCL_PATH}"
+start_varnishd "${VARNISH_VCL_PATH}" "${VARNISH_VCL_DEFAULT_BACKEND}"
