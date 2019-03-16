@@ -39,7 +39,8 @@ In case you want to feed the [varnishd](https://varnish-cache.org/docs/6.0/refer
 
 The following options are set by default:   
 `-a :${VARNISH_PORT} -s default=malloc,${VARNISH_RAM_STORAGE}`   
-If you want to overwrite those default-options - for example in order to store cache in a file instead of ram - use env `ARNISHD_DEFAULT_OPTS`:   
+
+If you want to overwrite those default-options - for example in order to store cache in a file instead of ram - use env `VARNISHD_DEFAULT_OPTS`:   
 `VARNISHD_DEFAULT_OPTS=-a ${VARNISH_PORT} -s file,/tmp/varnish_storage.bin,50%` 
 
 #### Varnishlog
