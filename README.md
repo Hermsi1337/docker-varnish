@@ -73,7 +73,7 @@ services:
       VARNISH_PORT: 8080
       VARNISH_RAM_STORAGE: 1G
       VARNISH_VCL_PATH: /etc/varnish/default.vcl
-      VARNISHD_OPTS: -t 36000
-      VARNISHLOG: true
+      VARNISHD_ADDITIONAL_OPTS: -t 36000
+      VARNISHLOG: 'true'
       VARNISHLOG_OPTS: -g session 
 ```
