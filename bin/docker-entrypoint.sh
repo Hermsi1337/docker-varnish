@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -xe
+set -e
 
 VARNISHLOG="$($(command -v echo) "${VARNISHLOG}" | $(command -v tr) '[:upper:]' '[:lower:]')"
 
