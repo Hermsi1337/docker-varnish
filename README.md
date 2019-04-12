@@ -6,10 +6,12 @@ Use this image to start your own varnish server fast and easy.
 Thanks to [Travis-CI](https://travis-ci.org/) this image is pushed weekly and creates new [tags](https://hub.docker.com/r/hermsi/alpine-varnish/tags/) if there are new versions available.
 
 ## Tags
+For recent tags [check dockerhub](https://hub.docker.com/r/hermsi/alpine-varnish/tags).   
 There are several versions of Varnish available.      
 This repository provides very fine grained tags in order to fit your needs.   
 The `latest`-tag always points to the "fresh"- , while the `stable`-tag points to the "supported" [releases](https://varnish-cache.org/releases/).
-* `6.1.1-r0`, `6.1.1`, `6.1`, `latest`
+* `6.2.0-r1`, `6.2.0`, `6.2`, `latest`
+* `6.1.1-r0`, `6.1.1`, `6.1`
 * `6.0.2-r0`, `6.0.0-r1`, `6.0.0`, `6.0`, `6`, `stable`
 * `5.2.1-r0`, `5.2.1`, `5.2`, `5`
 * `4.1.9-r0`, `4.1.9`, `4.1`, `4`
