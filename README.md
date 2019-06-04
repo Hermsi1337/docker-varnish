@@ -2,8 +2,8 @@
 Use this image to start your own varnish server fast and easy.
 
 ## Regular builds, automagically
-[![Build Status](https://travis-ci.org/Hermsi1337/docker-varnish.svg?branch=master)](https://travis-ci.org/Hermsi1337/docker-varnish)   
-Thanks to [Travis-CI](https://travis-ci.org/) this image is pushed weekly and creates new [tags](https://hub.docker.com/r/hermsi/alpine-varnish/tags/) if there are new versions available.
+[![Build Status](https://travis-ci.com/Hermsi1337/docker-varnish.svg?branch=master)](https://travis-ci.com/Hermsi1337/docker-varnish)   
+Thanks to [Travis-CI](https://travis-ci.com/) this image is pushed weekly and creates new [tags](https://hub.docker.com/r/hermsi/alpine-varnish/tags/) if there are new versions available.
 
 ## Tags
 For recent tags [check dockerhub](https://hub.docker.com/r/hermsi/alpine-varnish/tags).   
