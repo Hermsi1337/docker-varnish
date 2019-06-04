@@ -4,6 +4,10 @@ set -e
 
 VARNISHLOG="$($(command -v echo) "${VARNISHLOG}" | $(command -v tr) '[:upper:]' '[:lower:]')"
 
+if [ -z "${VARNISHD_DEFAULT_OPTS}" ]; then
+    VARNISHD_DEFAULT_OPTS="-a :${VARNISH_PORT} -s default=malloc,${VARNISH_RAM_STORAGE}"
+fi
+
 # 16. March 2019
 # We parse VARNISHD_OPTS as well as VARNISHD_ADDITIONAL_OPTS in order to don't break existent setups
 VARNISHD_FULL_OPTS="${VARNISHD_OPTS} ${VARNISHD_ADDITIONAL_OPTS} ${VARNISHD_DEFAULT_OPTS}"

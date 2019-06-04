@@ -15,7 +15,6 @@ ENV     VARNISH_PORT="8080" \
         VARNISHLOG="false" \
         VARNISHLOG_OPTS="" \
         VARNISH_VERSION="${VARNISH_VERSION}"
-ENV     VARNISHD_DEFAULT_OPTS="-a :${VARNISH_PORT} -s default=malloc,${VARNISH_RAM_STORAGE}"
 
 RUN     set -x && \
         apk add --no-cache --upgrade varnish=${VARNISH_VERSION} && \
