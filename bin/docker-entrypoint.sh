@@ -4,6 +4,8 @@ set -e
 
 VARNISHLOG="$($(command -v echo) "${VARNISHLOG}" | $(command -v tr) '[:upper:]' '[:lower:]')"
 
+# 04. June 2019
+# We build the default opts for varnishd on runtime in order to get the environment-vars passed by docker-run
 if [ -z "${VARNISHD_DEFAULT_OPTS}" ]; then
     VARNISHD_DEFAULT_OPTS="-a :${VARNISH_PORT} -s default=malloc,${VARNISH_RAM_STORAGE}"
 fi
