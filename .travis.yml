@@ -16,7 +16,7 @@ env:
 before_script:
   - sudo sysctl -w net.ipv4.ip_forward=1 
   - if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}" ; fi
-  - export LATEST_VERSION="6.2"
+  - export LATEST_VERSION="6.3"
   - export STABLE_VERSION="6.0"
 
 script:
