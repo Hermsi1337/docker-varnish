@@ -95,5 +95,5 @@ services:
       VARNISH_VCL_PATH: /etc/varnish/default.vcl
       VARNISHD_ADDITIONAL_OPTS: -t 36000
       VARNISHLOG: 'true'
-      VARNISHLOG_OPTS: -g session
+      VARNISHLOG_OPTS: -g sessiong
 ```
