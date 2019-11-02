@@ -4,7 +4,7 @@ Use this image to start your own varnish server fast and easy.
 
 ## Regular builds, automagically
 
-[![Build Status](https://travis-ci.com/Hermsi1337/docker-varnish.svg?branch=master)](https://travis-ci.com/Hermsi1337/docker-varnish)   
+[![Build Status](https://travis-ci.com/Hermsi1337/docker-varnish.svg?branch=master)](https://travis-ci.com/Hermsi1337/docker-varnish)  
 Thanks to [Travis-CI](https://travis-ci.com/) this image is pushed weekly and creates new [tags](https://hub.docker.com/r/hermsi/alpine-varnish/tags/) if there are new versions available.
 
 ## Tags
@@ -95,5 +95,5 @@ services:
       VARNISH_VCL_PATH: /etc/varnish/default.vcl
       VARNISHD_ADDITIONAL_OPTS: -t 36000
       VARNISHLOG: 'true'
-      VARNISHLOG_OPTS: -g session 
+      VARNISHLOG_OPTS: -g session
 ```

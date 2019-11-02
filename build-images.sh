@@ -16,9 +16,7 @@ get_meta_release() {
     unset OS_VER
     OS_VER="${1}"
 
-    if [[ "${OS_VER}" == "trusty" ]]; then
-        echo "3.0.5-2ubuntu0.1"
-    elif [[ "${OS_VER}" == "edge" ]]; then
+    if [[ "${OS_VER}" == "edge" ]]; then
         echo "$(w3m -dump "https://pkgs.alpinelinux.org/packages?name=varnish&branch=${OS_VER}" | grep -m 1 "x86" | awk '{print $2}')"
     else
         echo "$(w3m -dump "https://pkgs.alpinelinux.org/packages?name=varnish&branch=v${OS_VER}" | grep -m 1 "x86" | awk '{print $2}')"
