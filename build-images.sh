@@ -2,15 +2,6 @@
 
 set -e
 
-exact_base_version() {
-
-    unset FILE
-    FILE="${1}"
-    
-    grep -i "BASE_IMAGE" "${FILE}" | cut -d '=' -f 2
-
-}
-
 get_meta_release() {
 
     unset OS_VER
@@ -33,15 +24,6 @@ for VARNISH_VERSION_DIR in varnish-*; do
     unset FULL_VARNISH_VERSION_PATH
     FULL_VARNISH_VERSION_PATH="${TRAVIS_BUILD_DIR}/${VARNISH_VERSION_DIR}"
 
-    unset VERSION_FILE
-    VERSION_FILE="${FULL_VARNISH_VERSION_PATH}/exact_versions"
-
-    unset BASE_IMAGE_VERSION
-    BASE_IMAGE_VERSION="$(exact_base_version "${VERSION_FILE}")"
-
-    unset META_RELEASE_TAG
-    META_RELEASE_TAG="$(get_meta_release "${BASE_IMAGE_VERSION}")"
-
     unset PATCH_RELEASE_TAG
     PATCH_RELEASE_TAG="${META_RELEASE_TAG%-*}"
 
@@ -62,7 +44,6 @@ for VARNISH_VERSION_DIR in varnish-*; do
         --pull \
         --quiet \
         --build-arg VARNISH_VERSION="${META_RELEASE_TAG}" \
-        --build-arg BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION}" \
         --tag "${IMAGE_NAME}:${MAJOR_RELEASE_TAG}" \
         --tag "${IMAGE_NAME}:${MINOR_RELEASE_TAG}" \
         --tag "${IMAGE_NAME}:${PATCH_RELEASE_TAG}" \
