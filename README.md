@@ -1,5 +1,11 @@
 # Varnish, a caching reverse proxy
 
+[![Travis](https://shields.beevelop.com/travis/Hermsi1337/docker-varnish.svg?style=flat-square)](https://travis-ci.com/Hermsi1337/docker-varnish)
+[![Pulls](https://shields.beevelop.com/docker/pulls/hermsi/alpine-varnish.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Stars](https://shields.beevelop.com/docker/stars/hermsi/alpine-varnish.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Layers](https://shields.beevelop.com/docker/image/layers/hermsi/alpine-varnish/latest.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Size](https://shields.beevelop.com/docker/image/image-size/hermsi/alpine-varnish/latest.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+
 Use this image to start your own varnish server fast and easy.
 
 ## Regular builds, automagically
@@ -14,13 +20,13 @@ There are several versions of Varnish available.
 This repository provides very fine grained tags in order to fit your needs.  
 The `latest`-tag always points to the "fresh"- , while the `stable`-tag points to the "supported" [releases](https://varnish-cache.org/releases/).
 
-* `6.3.1-r0`, `6.3`, `latest`
-* `6.2.1-r0`, `6.2.0-r1`, `6.2.0`, `6.2`
-* `6.1.1-r0`, `6.1.1`, `6.1`
-* `6.0.2-r0`, `6.0.0-r1`, `6.0.0`, `6.0`, `6`, `stable`
-* `5.2.1-r0`, `5.2.1`, `5.2`, `5`
-* `4.1.9-r0`, `4.1.9`, `4.1`, `4`
-* `3.0.5-2ubuntu0.1`, `3.0.5`, `3.0`, `3`
+* `latest`, `6.3`, `6.3.2-r0`, `6.3.1-r0`
+* `6.2`, `6.2.1-r0`, `6.2.0-r1`, `6.2.0`
+* `6.1.1-r0`, `6.1.1`, `6.1` (`EOL`)
+* `stable`, `6`, `6.0`, `6.0.4-r0`, `6.0.2-r0`, `6.0.0-r1`, `6.0.0`
+* `5.2.1-r0`, `5.2.1`, `5.2`, `5` (`EOL`)
+* `4.1.9-r0`, `4.1.9`, `4.1`, `4` (`EOL`)
+* `3.0.5-2ubuntu0.1`, `3.0.5`, `3.0`, `3` (`EOL`)
 
 ## Usage
 

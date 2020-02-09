@@ -1,6 +1,4 @@
-ARG     BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION:-10}"
-
-FROM    alpine:${BASE_IMAGE_VERSION}
+FROM    alpine:3.10
 
 LABEL   maintainer="https://github.com/Hermsi1337"
 

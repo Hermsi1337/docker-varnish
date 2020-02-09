@@ -1,10 +1,8 @@
-ARG     BASE_IMAGE_VERSION="${BASE_IMAGE_VERSION:-edge}"
-
-FROM    alpine:${BASE_IMAGE_VERSION}
+FROM    alpine:edge
 
 LABEL   maintainer="https://github.com/Hermsi1337"
 
-ARG     VARNISH_VERSION="${VARNISH_VERSION:-6.3.1-r0}"
+ARG     VARNISH_VERSION="${VARNISH_VERSION:-6.3.2-r0}"
 
 ENV     VARNISH_PORT="8080" \
         VARNISH_RAM_STORAGE="128M" \
