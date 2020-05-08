@@ -1,8 +1,8 @@
-FROM    alpine:3.10
+FROM    alpine:edge
 
 LABEL   maintainer="https://github.com/Hermsi1337"
 
-ARG     VARNISH_VERSION="${VARNISH_VERSION:-6.2.1-r0}"
+ARG     VARNISH_VERSION="${VARNISH_VERSION:-6.4.0-r0}"
 
 ENV     VARNISH_PORT="8080" \
         VARNISH_RAM_STORAGE="128M" \
