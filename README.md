@@ -5,7 +5,7 @@
 [![Stars](https://shields.beevelop.com/docker/stars/hermsi/alpine-varnish.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
 [![Layers](https://shields.beevelop.com/docker/image/layers/hermsi/alpine-varnish/latest.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
 [![Size](https://shields.beevelop.com/docker/image/image-size/hermsi/alpine-varnish/latest.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://donate.dennis-hermsmeier.de)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-yellow.svg)](https://donate.dennis-hermsmeier.de)
 
 Use this image to start your own varnish server fast and easy.
 
