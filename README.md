@@ -20,7 +20,8 @@ There are several versions of Varnish available.
 This repository provides very fine grained tags in order to fit your needs.  
 The `latest`-tag always points to the "fresh"- , while the `stable`-tag points to the "supported" [releases](https://varnish-cache.org/releases/).
 
-* `latest`, `6.4`, `6.4.0-r0`
+* `latest`, `6.5`, `6.5.1-r0`
+* `6.4`, `6.4.0-r0`
 * `6.3`, `6.3.2-r0`, `6.3.1-r1`
 * `6.2`, `6.2.1-r0`, `6.2.0-r1`, `6.2.0` (`EOL`)
 * `6.1.1-r0`, `6.1.1`, `6.1` (`EOL`)
