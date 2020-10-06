@@ -1,4 +1,4 @@
-FROM    alpine:3.12
+FROM    alpine:edge
 
 LABEL   maintainer="https://github.com/Hermsi1337"
 
