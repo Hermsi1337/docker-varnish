@@ -11,6 +11,7 @@ addons:
 env:
   global:
     - IMAGE="alpine-varnish"
+    - DOCKER_USER="hermsi"
     - IMAGE_NAME="${DOCKER_USER}/${IMAGE}"
 
 before_script:
