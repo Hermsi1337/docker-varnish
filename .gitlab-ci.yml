@@ -35,10 +35,7 @@ build:docker:
     - master
   parallel:
     matrix:
-      - VARNISH_MINOR:
-          - 6.0
-          - 6.6
-          - 7.0
+      - VARNISH_MINOR: [ "6.0","6.6","7.0" ]
 
 deploy:docker:
   stage: deploy
@@ -65,7 +62,5 @@ deploy:docker:
     - master
   parallel:
     matrix:
-      - VARNISH_MINOR:
-          - 6.0
-          - 6.6
-          - 7.0
+      - VARNISH_MINOR: [ "6.0","6.6","7.0" ]
+        IMAGE_NAME: [ "hermsi/alpine-varnish", "quay.io/hermsi/alpine-varnish" ]
