@@ -57,8 +57,8 @@ deploy:docker:
       chmod 0600 "${HOME}/.docker/config.json"
     - docker push "${IMAGE_NAME}:${VARNISH_MINOR}"
     - docker push "${IMAGE_NAME}:${VARNISH_PATCH}"
-    - if [ "${VARNISH_MINOR}" == "${VARNISH_LATEST}" ]; docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:latest-${TIMESTAMP}"; fi
-    - if [ "${VARNISH_MINOR}" == "${VARNISH_STABLE}" ]; docker push "${IMAGE_NAME}:stable"; fi
+    - if [ "${VARNISH_MINOR}" == "${VARNISH_LATEST}" ]; then docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:latest-${TIMESTAMP}"; fi
+    - if [ "${VARNISH_MINOR}" == "${VARNISH_STABLE}" ]; then docker push "${IMAGE_NAME}:stable"; fi
   only:
     - master
   parallel:
