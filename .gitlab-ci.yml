@@ -25,6 +25,7 @@ build:docker:
       --no-cache
       --pull
       --build-arg VARNISH_VERSION="${VARNISH_PATCH}"
+      $(if [ "${VARNISH_MINOR}" = "6.0" ]; then echo "--build-arg ALPINE_VERSION='3.10'"; fi)
       --tag "${IMAGE_NAME}:latest"
       --tag "${IMAGE_NAME}:latest-${TIMESTAMP}"
       --file "${CI_PROJECT_DIR}/Dockerfile"
@@ -44,6 +45,7 @@ deploy:docker:
       --no-cache
       --pull
       --build-arg VARNISH_VERSION="${VARNISH_PATCH}"
+      $(if [ "${VARNISH_MINOR}" = "6.0" ]; then echo "--build-arg ALPINE_VERSION='3.10'"; fi)
       --tag "${IMAGE_NAME}:${VARNISH_MAJOR}"
       --tag "${IMAGE_NAME}:${VARNISH_MINOR}"
       --tag "${IMAGE_NAME}:${VARNISH_PATCH}"

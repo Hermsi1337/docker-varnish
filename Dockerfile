@@ -1,4 +1,5 @@
-FROM    alpine:3.14
+ARG     ALPINE_VERSION="${ALPINE_VERSION:-3.14}"
+FROM    alpine:${ALPINE_VERSION}
 
 LABEL   maintainer="https://github.com/Hermsi1337"
 
@@ -25,14 +26,15 @@ RUN     set -x \
                 libedit-dev \
                 libtool \
                 linux-headers \
-                pcre2-dev \
                 py-docutils \
+                $(if [ "$(echo ${VARNISH_VERSION} | cut -d '.' -f 1-2)" = "6.0" ]; then echo "py-sphinx" ; fi ) \
                 py3-sphinx \
                 tar \
                 sudo \
         && \
             apk add --no-cache \
                 ca-certificates \
+                $(if [ "$(echo ${VARNISH_VERSION} | cut -d '.' -f 1-2)" = "6.0" ]; then echo "pcre-dev" ; fi ) \
                 pcre2-dev \
                 libunwind-dev \
                 gcc \
