@@ -2,7 +2,6 @@ stages:
   - build
   - deploy
 variables:
-  IMAGE_NAME: "hermsi/alpine-varnish"
   VARNISH_STABLE: "6.0"
   VARNISH_LATEST: "7.0"
 
@@ -35,6 +34,7 @@ build:docker:
   parallel:
     matrix:
       - VARNISH_MINOR: [ "6.0","6.6","7.0" ]
+        IMAGE_NAME: [ "hermsi/alpine-varnish" ]
 
 deploy:docker:
   stage: deploy
