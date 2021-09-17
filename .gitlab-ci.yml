@@ -64,4 +64,4 @@ deploy:docker:
   parallel:
     matrix:
       - VARNISH_MINOR: [ "6.0","6.6","7.0" ]
-        IMAGE_NAME: [ "hermsi/alpine-varnish", "quay.io/hermsi/alpine-varnish" ]
+        IMAGE_NAME: [ "hermsi/alpine-varnish", "quay.io/hermsi1337/alpine-varnish" ]
