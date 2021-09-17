@@ -24,7 +24,7 @@ build:docker:
       docker build
       --no-cache
       --pull
-      --build-arg VARNISH_PATCH="${VARNISH_PATCH}"
+      --build-arg VARNISH_VERSION="${VARNISH_PATCH}"
       --tag "${IMAGE_NAME}:latest"
       --tag "${IMAGE_NAME}:latest-${TIMESTAMP}"
       --file "${CI_PROJECT_DIR}/Dockerfile"
@@ -43,7 +43,7 @@ deploy:docker:
       docker build
       --no-cache
       --pull
-      --build-arg VARNISH_PATCH="${VARNISH_PATCH}"
+      --build-arg VARNISH_VERSION="${VARNISH_PATCH}"
       --tag "${IMAGE_NAME}:${VARNISH_MAJOR}"
       --tag "${IMAGE_NAME}:${VARNISH_MINOR}"
       --tag "${IMAGE_NAME}:${VARNISH_PATCH}"
