@@ -25,7 +25,7 @@ build:docker:
       --no-cache
       --pull
       --build-arg VARNISH_VERSION="${VARNISH_PATCH}"
-      $(if [ "${VARNISH_MINOR}" = "6.0" ]; then echo "--build-arg ALPINE_VERSION='3.10'"; fi)
+      --build-arg ALPINE_VERSION="${ALPINE_VERSION}"
       --tag "${IMAGE_NAME}:latest"
       --tag "${IMAGE_NAME}:latest-${TIMESTAMP}"
       --file "${CI_PROJECT_DIR}/Dockerfile"
@@ -34,7 +34,11 @@ build:docker:
     - master
   parallel:
     matrix:
-      - VARNISH_MINOR: [ "6.0","6.6","7.0" ]
+      - VARNISH_MINOR: [ "6.6","7.0" ]
+        ALPINE_VERSION: [ "3.14" ]
+        IMAGE_NAME: [ "hermsi/alpine-varnish" ]
+      - VARNISH_MINOR: [ "6.0" ]
+        ALPINE_VERSION: [ "3.10" ]
         IMAGE_NAME: [ "hermsi/alpine-varnish" ]
 
 deploy:docker:
@@ -45,7 +49,7 @@ deploy:docker:
       --no-cache
       --pull
       --build-arg VARNISH_VERSION="${VARNISH_PATCH}"
-      $(if [ "${VARNISH_MINOR}" = "6.0" ]; then echo "--build-arg ALPINE_VERSION='3.10'"; fi)
+      --build-arg ALPINE_VERSION="${ALPINE_VERSION}"
       --tag "${IMAGE_NAME}:${VARNISH_MAJOR}"
       --tag "${IMAGE_NAME}:${VARNISH_MINOR}"
       --tag "${IMAGE_NAME}:${VARNISH_PATCH}"
@@ -65,5 +69,9 @@ deploy:docker:
     - master
   parallel:
     matrix:
-      - VARNISH_MINOR: [ "6.0","6.6","7.0" ]
+      - VARNISH_MINOR: [ "6.6","7.0" ]
+        ALPINE_VERSION: [ "3.14" ]
+        IMAGE_NAME: [ "hermsi/alpine-varnish", "quay.io/hermsi1337/alpine-varnish" ]
+      - VARNISH_MINOR: [ "6.0" ]
+        ALPINE_VERSION: [ "3.10" ]
         IMAGE_NAME: [ "hermsi/alpine-varnish", "quay.io/hermsi1337/alpine-varnish" ]
