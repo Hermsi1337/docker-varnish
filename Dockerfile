@@ -34,7 +34,7 @@ RUN     set -x \
         && \
             apk add --no-cache \
                 ca-certificates \
-                $(if [ "$(echo ${VARNISH_VERSION} | cut -d '.' -f 1-2)" = "6.0" ]; then echo "pcre-dev" ; fi ) \
+                pcre-dev \
                 pcre2-dev \
                 libunwind-dev \
                 gcc \
