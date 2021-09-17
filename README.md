@@ -1,34 +1,36 @@
 # Varnish, a caching reverse proxy
 
-[![Travis](https://shields.beevelop.com/travis/Hermsi1337/docker-varnish.svg?style=flat-square)](https://travis-ci.com/Hermsi1337/docker-varnish)
-[![Pulls](https://shields.beevelop.com/docker/pulls/hermsi/alpine-varnish.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
-[![Stars](https://shields.beevelop.com/docker/stars/hermsi/alpine-varnish.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
-[![Layers](https://shields.beevelop.com/docker/image/layers/hermsi/alpine-varnish/latest.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
-[![Size](https://shields.beevelop.com/docker/image/image-size/hermsi/alpine-varnish/latest.svg?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![pipeline status](https://gitlab.com/hermsi1337/docker-varnish/badges/master/pipeline.svg)](https://gitlab.com/hermsi1337/docker-varnish/-/commits/master)
+[![Docker Pulls](https://img.shields.io/docker/pulls/hermsi/alpine-varnish?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Docker Stars](https://img.shields.io/docker/stars/hermsi/alpine-varnish?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/hermsi/alpine-varnish?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Docker Image Size](https://img.shields.io/docker/image-size/hermsi/alpine-varnish?sort=date&style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T85UYT37P3YNJ&source=url)
 
 Use this image to start your own varnish server fast and easy.
 
 ## Regular builds, automagically
 
-Thanks to [Travis-CI](https://travis-ci.com/) this image is pushed weekly and creates new [tags](https://hub.docker.com/r/hermsi/alpine-varnish/tags/) if there are new versions available.
+Thanks to [Gitlab-CI](https://gitlab.com/hermsi1337/docker-varnish) this image is pushed weekly and creates new [tags](https://hub.docker.com/r/hermsi/alpine-varnish/tags/) if there are new versions available.
 
 ## Tags
 
-For recent tags [check dockerhub](https://hub.docker.com/r/hermsi/alpine-varnish/tags).  
+For recent tags check [dockerhub](https://hub.docker.com/r/hermsi/alpine-varnish/tags) or [quay](https://quay.io/repository/hermsi1337/alpine-varnish).  
 There are several versions of Varnish available.  
 This repository provides very fine grained tags in order to fit your needs.  
 The `latest`-tag always points to the "fresh"- , while the `stable`-tag points to the "supported" [releases](https://varnish-cache.org/releases/).
 
-* `latest`, `6.5`, `6.5.1-r0`
-* `6.4`, `6.4.0-r0`
-* `6.3`, `6.3.2-r0`, `6.3.1-r1`
-* `6.2`, `6.2.1-r0`, `6.2.0-r1`, `6.2.0` (`EOL`)
-* `6.1.1-r0`, `6.1.1`, `6.1` (`EOL`)
-* `stable`, `6`, `6.0`, `6.0.4-r0`, `6.0.2-r0`, `6.0.0-r1`, `6.0.0`
-* `5.2.1-r0`, `5.2.1`, `5.2`, `5` (`EOL`)
-* `4.1.9-r0`, `4.1.9`, `4.1`, `4` (`EOL`)
-* `3.0.5-2ubuntu0.1`, `3.0.5`, `3.0`, `3` (`EOL`)
+* `7.0`, `7.0.0`, `latest`
+* `6.6`, `6.6.1`
+* `6.5` (`EOL`)
+* `6.4` (`EOL`)
+* `6.3` (`EOL`)
+* `6.2`, `6.2.0` (`EOL`)
+* `6.1`, `6.1.1` (`EOL`)
+* `6.0`, `6.0.0`, `stable`
+* `5.2`, `5.2.1` (`EOL`)
+* `4.1` `4.1.9` (`EOL`)
+* `3.0`, `3.0.5` (`EOL`)
 
 ## Usage
 
