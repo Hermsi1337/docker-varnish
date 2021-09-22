@@ -3,7 +3,7 @@
 [![pipeline status](https://gitlab.com/hermsi1337/docker-varnish/badges/master/pipeline.svg)](https://gitlab.com/hermsi1337/docker-varnish/-/commits/master)
 [![Docker Pulls](https://img.shields.io/docker/pulls/hermsi/alpine-varnish?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
 [![Docker Stars](https://img.shields.io/docker/stars/hermsi/alpine-varnish?style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
-[![Docker Image Version (latest semver)]((https://img.shields.io/docker/v/hermsi/alpine-varnish?sort=semver&style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/hermsi/alpine-varnish?sort=semver&style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
 [![Docker Image Size](https://img.shields.io/docker/image-size/hermsi/alpine-varnish?sort=date&style=flat-square)](https://hub.docker.com/r/hermsi/alpine-varnish/)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T85UYT37P3YNJ&source=url)
 
