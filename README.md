@@ -1,3 +1,8 @@
+> [!WARNING]
+> **This project is deprecated and no longer maintained.**
+> This repository was archived in July 2026 — the Docker image will not receive any further updates or security patches.
+> Use the official [`varnish`](https://hub.docker.com/_/varnish) image instead, or install Varnish via `apk add varnish` on a current Alpine base.
+
 # Varnish, a caching reverse proxy
 
 [![pipeline status](https://gitlab.com/hermsi1337/docker-varnish/badges/master/pipeline.svg)](https://gitlab.com/hermsi1337/docker-varnish/-/commits/master)
